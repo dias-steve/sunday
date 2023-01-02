@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import Option from "../Option";
 
-test("displays image for each scoop ontion from server", async () => {
+test("displays image for each scoop option from server", async () => {
   render(<Option optionType="scoops" />);
 
   //find images
@@ -14,4 +14,20 @@ test("displays image for each scoop ontion from server", async () => {
   // confirm alt text of images
   const altText = scoopImages.map((element) => element.alt);
   expect(altText).toEqual(["Chocolate scoop", "Vanilla scoop"]);
+});
+
+test("displays image for each topping from server", async () => {
+  render(<Option optionType="toppings" />);
+
+  const toppingImages = await screen.findAllByRole("img", {
+    name: /topping$/i,
+  });
+  expect(toppingImages).toHaveLength(3);
+
+  const altText = toppingImages.map((element) => element.alt);
+  expect(altText).toEqual([
+    "Cherries topping",
+    "M&Ms topping",
+    "Hot fudge topping",
+  ]);
 });
