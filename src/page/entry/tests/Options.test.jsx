@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import Option from "../Option";
 
-test("displays image for each scoop option from server", async () => {
+test("Displays image for each scoop option from server", async () => {
   render(<Option optionType="scoops" />);
 
   //find images
@@ -16,7 +16,7 @@ test("displays image for each scoop option from server", async () => {
   expect(altText).toEqual(["Chocolate scoop", "Vanilla scoop"]);
 });
 
-test("displays image for each topping from server", async () => {
+test("Displays image for each topping from server", async () => {
   render(<Option optionType="toppings" />);
 
   const toppingImages = await screen.findAllByRole("img", {
